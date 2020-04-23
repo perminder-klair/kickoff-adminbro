@@ -19,7 +19,8 @@ const adminBro = new AdminBro({
     companyName: 'WhatsApp Numbers',
   },
   dashboard: {
-    component: AdminBro.bundle('./components/Dashboard'),
+    // handler: async () => {},
+    // component: AdminBro.bundle('./components/Dashboard'),
   },
   resources: [
     {
