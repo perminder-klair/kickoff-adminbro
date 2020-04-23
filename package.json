@@ -1,0 +1,19 @@
+{
+  "name": "adminbro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "admin-bro": "^2.2.7",
+    "admin-bro-expressjs": "^2.0.4",
+    "admin-bro-mongoose": "^0.5.1",
+    "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
+    "mongoose": "^5.9.10"
+  }
+}
