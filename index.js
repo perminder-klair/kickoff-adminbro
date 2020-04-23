@@ -16,11 +16,13 @@ const canModify = ({ currentAdmin }) =>
 
 const adminBro = new AdminBro({
   branding: {
+    // logo: 'URL_TO_YOUR_LOGO',
     companyName: 'WhatsApp Numbers',
+    softwareBrothers: false,
   },
   dashboard: {
-    // handler: async () => {},
-    // component: AdminBro.bundle('./components/Dashboard'),
+    handler: async () => {},
+    component: AdminBro.bundle('./components/Dashboard'),
   },
   resources: [
     {
@@ -66,6 +68,7 @@ const adminBro = new AdminBro({
               return request;
             },
           },
+          list: { isAccessible: canModify },
           edit: { isAccessible: canModify },
           delete: { isAccessible: canModify },
           new: { isAccessible: canModify },
@@ -95,10 +98,12 @@ const adminBro = new AdminBro({
           },
         },
         actions: {
+          list: { isAccessible: canModify },
           edit: { isAccessible: canModify },
           delete: { isAccessible: canModify },
           new: { isAccessible: canModify },
         },
+        sort: { direction: 'desc', sortBy: 'createdAt' },
       },
     },
   ],
