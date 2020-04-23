@@ -4,18 +4,86 @@ const formidableMiddleware = require('express-formidable');
 const AdminBroExpress = require('admin-bro-expressjs');
 const AdminBroMongoose = require('admin-bro-mongoose');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const Order = require('./database/order');
+const User = require('./database/user');
 
 AdminBro.registerAdapter(AdminBroMongoose);
 
+const canModify = ({ currentAdmin }) =>
+  currentAdmin && currentAdmin.role === 'admin';
+
 const adminBro = new AdminBro({
   // databases: [],
-  resources: [Order],
+  resources: [
+    {
+      resource: User,
+      options: {
+        properties: {
+          encryptedPassword: {
+            isVisible: false,
+          },
+          password: {
+            type: 'string',
+            isVisible: {
+              list: false,
+              edit: true,
+              filter: false,
+              show: false,
+            },
+          },
+        },
+        actions: {
+          new: {
+            before: async (request) => {
+              if (request.payload.password) {
+                request.payload = {
+                  ...request.payload,
+                  encryptedPassword: await bcrypt.hash(
+                    request.payload.password,
+                    10,
+                  ),
+                  password: undefined,
+                };
+              }
+              return request;
+            },
+          },
+          edit: { isAccessible: canModify },
+          delete: { isAccessible: canModify },
+          new: { isAccessible: canModify },
+        },
+      },
+    },
+    {
+      resource: Order,
+      options: {
+        actions: {
+          edit: { isAccessible: canModify },
+          delete: { isAccessible: canModify },
+          new: { isAccessible: canModify },
+        },
+      },
+    },
+  ],
   rootPath: '/admin',
 });
 
-const router = AdminBroExpress.buildRouter(adminBro);
+// const router = AdminBroExpress.buildRouter(adminBro);
+const router = AdminBroExpress.buildAuthenticatedRouter(adminBro, {
+  authenticate: async (email, password) => {
+    const user = await User.findOne({ email });
+    if (user) {
+      const matched = await bcrypt.compare(password, user.encryptedPassword);
+      if (matched) {
+        return user;
+      }
+    }
+    return false;
+  },
+  cookiePassword: 'some-secret-password-used-to-secure-cookie',
+});
 
 const app = express();
 app.use(formidableMiddleware());
