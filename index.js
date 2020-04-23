@@ -15,12 +15,27 @@ const canModify = ({ currentAdmin }) =>
   currentAdmin && currentAdmin.role === 'admin';
 
 const adminBro = new AdminBro({
-  // databases: [],
+  branding: {
+    companyName: 'WhatsApp Numbers',
+  },
+  dashboard: {
+    component: AdminBro.bundle('./components/Dashboard'),
+  },
   resources: [
     {
       resource: User,
       options: {
+        listProperties: ['email', 'role', 'createdAt'],
         properties: {
+          _id: {
+            isVisible: false,
+          },
+          createdAt: {
+            isVisible: false,
+          },
+          updatedAt: {
+            isVisible: false,
+          },
           encryptedPassword: {
             isVisible: false,
           },
@@ -59,6 +74,25 @@ const adminBro = new AdminBro({
     {
       resource: Order,
       options: {
+        listProperties: [
+          'code',
+          'whatsAppNumber',
+          'interval',
+          'type',
+          'status',
+          'createdAt',
+        ],
+        properties: {
+          _id: {
+            isVisible: false,
+          },
+          createdAt: {
+            isVisible: false,
+          },
+          updatedAt: {
+            isVisible: false,
+          },
+        },
         actions: {
           edit: { isAccessible: canModify },
           delete: { isAccessible: canModify },
@@ -67,6 +101,14 @@ const adminBro = new AdminBro({
       },
     },
   ],
+  locale: {
+    translations: {
+      labels: {
+        User: 'Admin Users',
+        Order: 'Orders',
+      },
+    },
+  },
   rootPath: '/admin',
 });
 
