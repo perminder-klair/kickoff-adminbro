@@ -1,6 +1,8 @@
 ## Kickoff AdminBro
 
-Admin Panel for Mongoose MongoDB
+Admin Panel for Mongoose MongoDB using [AdminBro](https://adminbro.com/)
+
+Documentation is available [here](https://adminbro.com/docs.html)
 
 [DEMO](https://kickoff-adminbro.herokuapp.com/admin)
 
@@ -19,8 +21,6 @@ In the end you can launch the app
 
 ```
 yarn start
-or
-yarn dev
 ```
 
 ## Deployment to Heroku
