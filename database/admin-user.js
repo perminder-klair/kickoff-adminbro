@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema(
+const AdminUserSchema = new mongoose.Schema(
   {
     email: { type: String, required: true },
     encryptedPassword: { type: String, required: true },
@@ -15,10 +15,10 @@ const UserSchema = new mongoose.Schema(
 );
 
 const getModel = () => {
-  if (mongoose.models.User) {
-    return mongoose.model('User');
+  if (mongoose.models.AdminUser) {
+    return mongoose.model('AdminUser');
   }
-  return mongoose.model('User', UserSchema);
+  return mongoose.model('AdminUser', AdminUserSchema);
 };
 
 module.exports = getModel();

@@ -19,20 +19,6 @@ const OrderSchema = new mongoose.Schema(
   {
     code: { type: String, required: true },
     customer: CustomerSchema,
-    whatsAppNumber: { type: String, required: true }, // number bought
-    stripeCustomerId: { type: String, required: true },
-    stripeSubscriptionId: { type: String, required: true },
-    stripePlanId: { type: String, required: true },
-    interval: {
-      type: String,
-      default: 'monthly',
-      enum: ['monthly', 'yearly'],
-    },
-    type: {
-      type: String,
-      default: 'mobile',
-      enum: ['mobile', 'landline'],
-    },
     status: {
       type: String,
       default: 'pending',
