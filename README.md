@@ -2,6 +2,11 @@
 
 Admin Panel for Mongoose MongoDB
 
+[DEMO](https://kickoff-adminbro.herokuapp.com/admin)
+
+- Email: admin@admin.com
+- Password: admin12
+
 ## Starting the app
 
 First install all dependencies
