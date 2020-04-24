@@ -1,4 +1,4 @@
-## Admin-bro-dev
+## Kickoff AdminBro
 
 Admin Panel for Mongoose MongoDB
 
@@ -14,4 +14,6 @@ In the end you can launch the app
 
 ```
 yarn start
+or
+yarn dev
 ```
