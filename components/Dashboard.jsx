@@ -1,8 +1,25 @@
-import React from 'react';
-import { Box } from 'admin-bro';
+import { useState, useEffect } from 'react';
+import { ApiClient } from 'admin-bro';
+import { Box } from '@admin-bro/design-system';
 
-const Dashboard = (props) => {
-  return <Box>Welcome to Admin Panel!</Box>;
-};
+const api = new ApiClient()
 
-export default Dashboard;
+const Dashboard = () => {
+  const [data, setData] = useState({})
+
+  useEffect(() => {
+    api.getDashboard().then((response) => {
+      setData(response.data)
+    })
+  }, [])
+
+  return (
+    <Box variant="grey">
+      <Box variant="white">
+      Welcome to Admin Panel!
+      </Box>
+    </Box>
+  )
+}
+
+export default Dashboard
