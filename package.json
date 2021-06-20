@@ -1,7 +1,7 @@
 {
   "name": "kickoff-adminbro",
   "version": "1.0.0",
-  "description": "",
+  "description": "Auto-magic admin panel for MongoDb projects",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -9,32 +9,32 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "admin-bro": "^3.4.0",
+    "admin-bro": "^4.0.1",
     "admin-bro-expressjs": "^2.1.1",
     "admin-bro-mongoose": "^0.5.2",
-    "bcrypt": "^5.0.0",
-    "convict": "^6.0.0",
+    "bcrypt": "^5.0.1",
+    "convict": "^6.1.0",
     "cookie-parser": "^1.4.5",
-    "dotenv": "^8.2.0",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-formidable": "^1.2.0",
-    "express-session": "^1.17.1",
-    "mongoose": "^5.11.15"
+    "express-session": "^1.17.2",
+    "mongoose": "^5.12.14"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.13",
-    "@babel/plugin-proposal-decorators": "^7.12.13",
-    "@babel/preset-env": "^7.12.13",
-    "@babel/preset-react": "^7.12.13",
-    "@babel/preset-typescript": "^7.12.13",
-    "@babel/register": "^7.12.13",
-    "@babel/runtime": "^7.12.13",
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-proposal-decorators": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@babel/register": "^7.14.5",
+    "@babel/runtime": "^7.14.6",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "eslint": "^7.19.0",
+    "eslint": "^7.29.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.3.1",
-    "prettier": "^2.2.1"
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "prettier": "^2.3.1"
   }
 }
